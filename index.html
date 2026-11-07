@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sufyan Najeeb — Full-Stack Developer</title>
+<style>
+:root{--bg:#07070d;--bg2:#0e0e1a;--card:rgba(255,255,255,.04);--bd:rgba(255,255,255,.09);--tx:#e8e8f2;--mu:#9a9ab5;--a:#7c5cff;--b:#00e0c6;--c:#ff5c9d;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+:root[data-theme="light"]{--bg:#f6f6fb;--bg2:#ececf6;--card:rgba(0,0,0,.04);--bd:rgba(0,0,0,.1);--tx:#15152a;--mu:#5d5d78}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;scroll-padding-top:80px}
+body{font-family:'Segoe UI',system-ui,-apple-system,Roboto,sans-serif;background:var(--bg);color:var(--tx);line-height:1.6;overflow-x:hidden}
+canvas#bg{position:fixed;inset:0;z-index:-1;width:100%;height:100%}
+.glow{position:fixed;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,var(--a),transparent 70%);opacity:.18;pointer-events:none;z-index:-1;transform:translate(-50%,-50%)}
+nav{position:fixed;top:env(safe-area-inset-top,0px);left:0;right:0;z-index:50;display:flex;justify-content:space-between;align-items:center;padding:14px 5vw;backdrop-filter:blur(14px);background:color-mix(in srgb,var(--bg) 70%,transparent);border-bottom:1px solid var(--bd)}
+.logo{font-weight:800;font-size:1.2rem;background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+nav ul{display:flex;gap:22px;list-style:none;align-items:center}
+nav a{color:var(--mu);text-decoration:none;font-size:.9rem;transition:.2s}
+nav a:hover{color:var(--tx)}
+#theme{background:var(--card);border:1px solid var(--bd);color:var(--tx);border-radius:50%;width:36px;height:36px;cursor:pointer}
+@media(max-width:760px){nav ul li:not(:last-child){display:none}}
+section{padding:100px 5vw;max-width:1180px;margin:auto}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:8px}
+h2 span{background:linear-gradient(90deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+.sub{color:var(--mu);margin-bottom:40px}
+#home{min-height:100vh;display:grid;grid-template-columns:1fr;gap:40px;align-items:center;padding-top:120px}
+.tag{display:inline-block;padding:6px 14px;border:1px solid var(--bd);border-radius:99px;background:var(--card);font-size:.8rem;color:var(--b);margin-bottom:18px}
+h1{font-size:clamp(2.4rem,6vw,4.4rem);line-height:1.1;margin-bottom:14px}
+h1 span{background:linear-gradient(90deg,var(--a),var(--c));-webkit-background-clip:text;background-clip:text;color:transparent}
+.type{font-size:1.3rem;color:var(--mu);min-height:2em}
+.type b{color:var(--b);border-right:2px solid var(--b);padding-right:3px;font-weight:600}
+.hero p.d{max-width:540px;color:var(--mu);margin:14px 0 28px}
+.btn{display:inline-block;padding:12px 26px;border-radius:12px;text-decoration:none;font-weight:600;margin:0 10px 10px 0;transition:.25s;border:1px solid var(--bd);color:var(--tx)}
+.btn.p{background:linear-gradient(135deg,var(--a),var(--c));border:none;color:#fff;box-shadow:0 8px 30px -8px var(--a)}
+.btn:hover{transform:translateY(-3px)}
+.orb{aspect-ratio:1;border-radius:50%;position:relative;display:grid;place-items:center;max-width:340px;margin:auto;width:100%}
+.orb::before{content:"";position:absolute;inset:0;border-radius:50%;background:conic-gradient(var(--a),var(--b),var(--c),var(--a));animation:spin 8s linear infinite;filter:blur(2px)}
+.orb::after{content:"";position:absolute;inset:6px;border-radius:50%;background:var(--bg2)}
+.orb i{position:relative;z-index:1;font-style:normal;font-size:5.5rem;font-weight:800;background:linear-gradient(135deg,var(--a),var(--b));-webkit-background-clip:text;background-clip:text;color:transparent}
+@keyframes spin{to{transform:rotate(360deg)}}
+.stats{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:20px}
+.stat,.card{background:var(--card);border:1px solid var(--bd);border-radius:18px;padding:22px;backdrop-filter:blur(8px);transition:.3s}
+.stat{text-align:center}
+.stat b{font-size:2rem;display:block;color:var(--b)}
+.stat small{color:var(--mu)}
+.card:hover{transform:translateY(-6px);border-color:var(--a);box-shadow:0 20px 50px -25px var(--a)}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:22px}
+.card h3{margin:10px 0 6px;font-size:1.2rem}
+.card p,.card li{color:var(--mu);font-size:.92rem}
+.card ul{padding-left:18px;margin-top:8px}
+.ic{font-size:2rem}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+.chip{font-size:.72rem;padding:4px 10px;border-radius:99px;background:color-mix(in srgb,var(--a) 18%,transparent);color:var(--tx);border:1px solid var(--bd)}
+.new{display:inline-block;font-size:.65rem;padding:2px 8px;border-radius:99px;background:linear-gradient(90deg,var(--b),var(--a));color:#000;font-weight:700;vertical-align:middle;margin-left:6px}
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
+.filters button{background:var(--card);border:1px solid var(--bd);color:var(--mu);padding:8px 18px;border-radius:99px;cursor:pointer;transition:.2s}
+.filters button.on{background:var(--a);color:#fff;border-color:var(--a)}
+.skill{margin-bottom:16px}
+.skill div{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:6px}
+.bar{height:8px;background:var(--card);border-radius:9px;overflow:hidden;border:1px solid var(--bd)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));border-radius:9px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.tl{border-left:2px solid var(--bd);padding-left:22px}
+.tl .it{position:relative;margin-bottom:26px}
+.tl .it::before{content:"";position:absolute;left:-30px;top:6px;width:14px;height:14px;border-radius:50%;background:var(--a);box-shadow:0 0 0 4px var(--bg),0 0 14px var(--a)}
+.tl small{color:var(--b)}
+.tl h4{font-size:1.05rem}
+.tl p{color:var(--mu);font-size:.9rem}
+form{display:grid;gap:14px}
+input,textarea{width:100%;padding:14px;border-radius:12px;border:1px solid var(--bd);background:var(--card);color:var(--tx);font:inherit}
+input:focus,textarea:focus{outline:2px solid var(--a)}
+footer{text-align:center;padding:30px;color:var(--mu);border-top:1px solid var(--bd);font-size:.85rem}
+.rv{opacity:0;transform:translateY(30px);transition:.8s}
+.rv.in{opacity:1;transform:none}
+@media(max-width:860px){#home,.two{grid-template-columns:1fr}.stats{grid-template-columns:repeat(2,1fr)}.orb{max-width:220px}.orb i{font-size:3.5rem}}
+</style>
+</head>
+<body>
+<canvas id="bg"></canvas><div class="glow" id="glow"></div>
+
+<nav>
+<div class="logo">Sufyan</div>
+<ul><li><a href="#about">About</a></li><li><a href="#skills">Skills</a></li><li><a href="#projects">Projects</a></li><li><a href="#education">Education</a></li><li><a href="#contact">Contact</a></li><li><button id="theme" aria-label="Toggle theme">🌓</button></li></ul>
+</nav>
+
+<section id="home" class="hero">
+<div>
+<span class="tag">● Open to work · Kerala, India</span>
+<h1>Hi, I'm <span>Sufyan Najeeb</span></h1>
+<div class="type">I build <b id="typed"></b></div>
+<p class="d">Full-Stack Developer and MCA student crafting web, mobile and AI-powered applications with Python, Django, JavaScript and Flutter — from concept to deployment.</p>
+<a class="btn p" href="#projects">View Projects</a><a class="btn" href="#contact">Hire Me</a>
+</div>
+</section>
+
+<section id="about" class="rv">
+<h2>About <span>Me</span></h2>
+<p class="sub">Concept → development → debugging → deployment.</p>
+<div class="two">
+<div class="card"><p>I'm a BCA graduate currently pursuing my MCA, with hands-on experience in Python, Django, PHP, JavaScript, Flutter and REST APIs. I design databases in MySQL, MongoDB and Redis, integrate Razorpay payments, use Git/GitHub, and deploy to Vercel. I'm seeking a Software Developer, Full-Stack Developer or Python/Django Developer role.</p>
+<div class="chips"><span class="chip">Malayalam</span><span class="chip">English</span><span class="chip">Arabic</span></div></div>
+<div class="stats" style="margin:0;grid-template-columns:repeat(2,1fr)">
+<div class="stat"><b data-n="7">0</b><small>Projects built</small></div>
+<div class="stat"><b data-n="3">0</b><small>Databases used</small></div>
+<div class="stat"><b data-n="5">0</b><small>Languages coded</small></div>
+<div class="stat"><b data-n="2027">0</b><small>MCA graduation</small></div>
+</div></div>
+</section>
+
+<section id="skills" class="rv">
+<h2>Technical <span>Skills</span></h2>
+<p class="sub">Tools I use to ship products.</p>
+<div class="two">
+<div>
+<div class="skill"><div><span>Python / Django</span><span>90%</span></div><div class="bar"><i data-w="90"></i></div></div>
+<div class="skill"><div><span>JavaScript / HTML5 / CSS3</span><span>88%</span></div><div class="bar"><i data-w="88"></i></div></div>
+<div class="skill"><div><span>PHP &amp; MySQL</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div></div>
+<div class="skill"><div><span>Flutter / Dart</span><span>75%</span></div><div class="bar"><i data-w="75"></i></div></div>
+<div class="skill"><div><span>MongoDB / Redis</span><span>78%</span></div><div class="bar"><i data-w="78"></i></div></div>
+</div>
+<div class="card">
+<div class="chips" style="margin:0">
+<span class="chip">Node.js</span><span class="chip">REST APIs</span><span class="chip">PHPMailer</span><span class="chip">Razorpay</span><span class="chip">Upstash Redis</span><span class="chip">PWA</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Vercel</span><span class="chip">Postman</span><span class="chip">VS Code</span><span class="chip">XAMPP / WAMP</span><span class="chip">AI / ML</span><span class="chip">Mobile Dev</span><span class="chip">API Development</span>
+</div>
+<p style="margin-top:18px">Soft skills: problem solving, logical thinking, team collaboration, communication, quick learning, adaptability, project &amp; time management.</p>
+</div></div>
+</section>
+
+<section id="projects" class="rv">
+<h2>Featured <span>Projects</span></h2>
+<p class="sub">Things I've designed, built and deployed.</p>
+<div class="filters" id="filters">
+<button class="on" data-f="all">All</button><button data-f="ai">AI</button><button data-f="web">Web</button><button data-f="mobile">Mobile</button><button data-f="mgmt">Management</button>
+</div>
+<div class="grid" id="pgrid">
+
+<div class="card" data-c="mgmt web"><div class="ic">🏋️</div><h3>Gym Management System <span class="new">NEW</span></h3>
+<p>Complete gym operations platform for owners, trainers and members.</p>
+<ul><li>Member registration, plans &amp; renewals with expiry alerts</li><li>Attendance tracking and trainer assignment</li><li>Workout and diet plan management</li><li>Fee collection, invoices and admin dashboard</li></ul>
+<div class="chips"><span class="chip">Python</span><span class="chip">Django</span><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span></div></div>
+
+<div class="card" data-c="mgmt web"><div class="ic">🎭</div><h3>Auditorium Booking System <span class="new">NEW</span></h3>
+<p>Online booking and administration for auditoriums and event halls.</p>
+<ul><li>Browse auditoriums, check date and slot availability</li><li>Conflict-free event bookings with approval flow</li><li>Admin dashboard for users, events and bookings</li><li>Booking status tracking and notifications</li></ul>
+<div class="chips"><span class="chip">JavaScript</span><span class="chip">REST API</span><span class="chip">Node.js</span><span class="chip">HTML/CSS</span></div></div>
+
+<div class="card" data-c="ai mobile web"><div class="ic">🩺</div><h3>AI Doctor / Healthcare Platform</h3>
+<p>Django doctor web app plus Flutter patient app for online consultation.</p>
+<ul><li>Real-time doctor-patient chat with image sharing</li><li>Razorpay payments; chat unlocks on payment, closes after 24h</li><li>Diet plans, prescriptions, report analysis, doctor verification</li><li>Admin monitoring and rating system</li></ul>
+<div class="chips"><span class="chip">Django</span><span class="chip">Flutter</span><span class="chip">REST</span><span class="chip">Razorpay</span></div></div>
+
+<div class="card" data-c="ai web"><div class="ic">🎥</div><h3>Smart Meeting Platform</h3>
+<p>Video-meeting platform with AI assistance.</p>
+<ul><li>Multi-user login, image chat, floating reactions, hand gestures</li><li>Meeting recording and speech transcription</li><li>Multi-language translation and summarization</li></ul>
+<div class="chips"><span class="chip">Django</span><span class="chip">JavaScript</span><span class="chip">AI</span></div></div>
+
+<div class="card" data-c="web"><div class="ic">🚗</div><h3>Vehicle Document Tracker (Vault)</h3>
+<p>Cloud PWA tracking vehicle document expiry with shared vehicle management.</p>
+<ul><li>Upstash Redis persistence for cross-device access</li><li>Responsive PWA deployed on Vercel</li></ul>
+<div class="chips"><span class="chip">JavaScript</span><span class="chip">Redis</span><span class="chip">Vercel</span><span class="chip">PWA</span></div></div>
+
+<div class="card" data-c="mgmt web"><div class="ic">📚</div><h3>Library Management System</h3>
+<p>Role-based system for admin, librarian and users.</p>
+<ul><li>Reservations, approvals, collections, return tracking</li><li>Automated email alerts with PHPMailer</li></ul>
+<div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">PHPMailer</span></div></div>
+
+<div class="card" data-c="web"><div class="ic">💊</div><h3>Online Medical Store</h3>
+<p>E-commerce pharmacy for users, pharmacists and admins.</p>
+<ul><li>Prescription upload with pharmacist approval</li><li>Online and COD payments, delivery management</li><li>Product and batch expiry monitoring</li></ul>
+<div class="chips"><span class="chip">PHP</span><span class="chip">MySQL</span><span class="chip">JavaScript</span></div></div>
+
+</div>
+</section>
+
+<section id="education" class="rv">
+<h2>Education &amp; <span>Experience</span></h2>
+<p class="sub">Learning path and hands-on work.</p>
+<div class="two">
+<div class="tl">
+<div class="it"><small>2025 – 2027</small><h4>MCA</h4><p>Kristu Jyothi College of Management &amp; Technology, Changanacherry, Kottayam</p></div>
+<div class="it"><small>2022 – 2025</small><h4>BCA</h4><p>MES Golden Jubilee College, Payyappady, Kottayam</p></div>
+<div class="it"><small>Coursework</small><h4>Core Subjects</h4><p>DSA, DBMS, OOP, Web Technologies, Software Engineering, OS, Networks, AI, ML, Mobile App Development</p></div>
+</div>
+<div class="tl">
+<div class="it"><small>Web</small><h4>Web Development</h4><p>Responsive, database-driven apps with HTML, CSS, JavaScript, Django and PHP.</p></div>
+<div class="it"><small>Mobile</small><h4>Mobile Development</h4><p>Android apps in Flutter and Dart integrated with REST backends.</p></div>
+<div class="it"><small>DevOps</small><h4>Version Control &amp; Deployment</h4><p>Git/GitHub workflows and Vercel deployments; debugging across Django, PHP, Node.js.</p></div>
+</div></div>
+</section>
+
+<section id="contact" class="rv">
+<h2>Let's <span>Connect</span></h2>
+<p class="sub">Have a role or project in mind? Reach out.</p>
+<div style="max-width:560px">
+<div class="card"><h3>📍 Kerala, India</h3><p style="margin:10px 0"><a style="color:var(--b)" href="mailto:sufyannajeeb786@gmail.com">sufyannajeeb786@gmail.com</a></p>
+<p><a style="color:var(--b)" href="https://linkedin.com/in/sufyan-najeeb" target="_blank" rel="noopener">LinkedIn</a> · <a style="color:var(--b)" href="https://github.com/sufyannajeeb" target="_blank" rel="noopener">GitHub</a></p></div>
+</div>
+</section>
+
+<footer>© 2026 Sufyan Najeeb · Built with HTML5, CSS3 &amp; JavaScript</footer>
+
+<script>
+// typing effect
+const words=["full-stack web apps","AI-powered platforms","Flutter mobile apps","Django backends"];
+let wi=0,ci=0,del=false;const t=document.getElementById('typed');
+(function tick(){const w=words[wi];t.textContent=w.slice(0,ci);
+if(!del&&ci++===w.length){del=true;return setTimeout(tick,1400)}
+if(del&&--ci<0){del=false;ci=0;wi=(wi+1)%words.length}
+setTimeout(tick,del?40:80)})();
+// reveal + counters + bars
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
+e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');
+e.target.querySelectorAll('[data-n]').forEach(c=>{const n=+c.dataset.n,s=performance.now();
+(function f(x){const p=Math.min((x-s)/1400,1);c.textContent=Math.floor(n*p);if(p<1)requestAnimationFrame(f)})(s)});
+io.unobserve(e.target)}),{threshold:.15});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+// project filters
+document.getElementById('filters').addEventListener('click',e=>{const b=e.target.closest('button');if(!b)return;
+document.querySelectorAll('#filters button').forEach(x=>x.classList.remove('on'));b.classList.add('on');
+document.querySelectorAll('#pgrid .card').forEach(c=>c.style.display=(b.dataset.f==='all'||c.dataset.c.includes(b.dataset.f))?'':'none')});
+// theme toggle
+document.getElementById('theme').onclick=()=>{const r=document.documentElement;r.dataset.theme=r.dataset.theme==='light'?'dark':'light'};
+// cursor glow
+const g=document.getElementById('glow');addEventListener('pointermove',e=>{g.style.left=e.clientX+'px';g.style.top=e.clientY+'px'});
+// particle network
+const cv=document.getElementById('bg'),x=cv.getContext('2d');let P=[];
+function rs(){cv.width=innerWidth;cv.height=innerHeight;P=Array.from({length:Math.min(70,innerWidth/18)},()=>({x:Math.random()*cv.width,y:Math.random()*cv.height,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4}))}
+rs();addEventListener('resize',rs);
+(function d(){x.clearRect(0,0,cv.width,cv.height);
+P.forEach((p,i)=>{p.x+=p.vx;p.y+=p.vy;if(p.x<0||p.x>cv.width)p.vx*=-1;if(p.y<0||p.y>cv.height)p.vy*=-1;
+x.fillStyle='rgba(124,92,255,.7)';x.beginPath();x.arc(p.x,p.y,1.6,0,6.3);x.fill();
+for(let j=i+1;j<P.length;j++){const q=P[j],dd=Math.hypot(p.x-q.x,p.y-q.y);if(dd<120){x.strokeStyle='rgba(0,224,198,'+(.18*(1-dd/120))+')';x.beginPath();x.moveTo(p.x,p.y);x.lineTo(q.x,q.y);x.stroke()}}});
+requestAnimationFrame(d)})();
+</script>
+</body>
+</html>
