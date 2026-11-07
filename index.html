@@ -55,10 +55,10 @@ h1 span{background:linear-gradient(90deg,var(--a),var(--c));-webkit-background-c
 .filters{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:26px}
 .filters button{background:var(--card);border:1px solid var(--bd);color:var(--mu);padding:8px 18px;border-radius:99px;cursor:pointer;transition:.2s}
 .filters button.on{background:var(--a);color:#fff;border-color:var(--a)}
-.skill{margin-bottom:16px}
-.skill div{display:flex;justify-content:space-between;font-size:.88rem;margin-bottom:6px}
-.bar{height:8px;background:var(--card);border-radius:9px;overflow:hidden;border:1px solid var(--bd)}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--a),var(--b));border-radius:9px;transition:width 1.4s cubic-bezier(.2,.8,.2,1)}
+.tech{list-style:none;display:grid;gap:14px;margin-top:14px}
+.tech li{font-size:.92rem;color:var(--mu);padding-left:16px;position:relative}
+.tech li::before{content:"";position:absolute;left:0;top:.55em;width:6px;height:6px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--b))}
+.tech b{display:block;color:var(--tx);font-weight:600;font-size:.86rem;letter-spacing:.02em;margin-bottom:1px}
 .two{display:grid;grid-template-columns:1fr 1fr;gap:30px}
 .tl{border-left:2px solid var(--bd);padding-left:22px}
 .tl .it{position:relative;margin-bottom:26px}
@@ -111,16 +111,21 @@ footer{text-align:center;padding:30px;color:var(--mu);border-top:1px solid var(-
 <h2>Technical <span>Skills</span></h2>
 <p class="sub">Tools I use to ship products.</p>
 <div class="two">
-<div>
-<div class="skill"><div><span>Python / Django</span><span>90%</span></div><div class="bar"><i data-w="90"></i></div></div>
-<div class="skill"><div><span>JavaScript / HTML5 / CSS3</span><span>88%</span></div><div class="bar"><i data-w="88"></i></div></div>
-<div class="skill"><div><span>PHP &amp; MySQL</span><span>85%</span></div><div class="bar"><i data-w="85"></i></div></div>
-<div class="skill"><div><span>Flutter / Dart</span><span>75%</span></div><div class="bar"><i data-w="75"></i></div></div>
-<div class="skill"><div><span>MongoDB / Redis</span><span>78%</span></div><div class="bar"><i data-w="78"></i></div></div>
+<div class="card">
+<h3>Core Stack</h3>
+<ul class="tech">
+<li><b>Backend</b>Python, Django, PHP, Node.js</li>
+<li><b>Frontend</b>JavaScript, HTML5, CSS3</li>
+<li><b>Mobile</b>Flutter, Dart</li>
+<li><b>Databases</b>MySQL, MongoDB, Redis</li>
+<li><b>Integrations</b>REST APIs, Razorpay, PHPMailer</li>
+<li><b>Workflow</b>Git, GitHub, Vercel</li>
+</ul>
 </div>
 <div class="card">
-<div class="chips" style="margin:0">
-<span class="chip">Node.js</span><span class="chip">REST APIs</span><span class="chip">PHPMailer</span><span class="chip">Razorpay</span><span class="chip">Upstash Redis</span><span class="chip">PWA</span><span class="chip">Git</span><span class="chip">GitHub</span><span class="chip">Vercel</span><span class="chip">Postman</span><span class="chip">VS Code</span><span class="chip">XAMPP / WAMP</span><span class="chip">AI / ML</span><span class="chip">Mobile Dev</span><span class="chip">API Development</span>
+<h3>Tools &amp; Extras</h3>
+<div class="chips" style="margin-top:10px">
+<span class="chip">Upstash Redis</span><span class="chip">PWA</span><span class="chip">Postman</span><span class="chip">VS Code</span><span class="chip">XAMPP / WAMP</span><span class="chip">AI / ML</span><span class="chip">Mobile Dev</span><span class="chip">API Development</span>
 </div>
 <p style="margin-top:18px">Soft skills: problem solving, logical thinking, team collaboration, communication, quick learning, adaptability, project &amp; time management.</p>
 </div></div>
@@ -207,9 +212,8 @@ let wi=0,ci=0,del=false;const t=document.getElementById('typed');
 if(!del&&ci++===w.length){del=true;return setTimeout(tick,1400)}
 if(del&&--ci<0){del=false;ci=0;wi=(wi+1)%words.length}
 setTimeout(tick,del?40:80)})();
-// reveal + counters + bars
+// reveal + counters
 const io=new IntersectionObserver(es=>es.forEach(e=>{if(!e.isIntersecting)return;e.target.classList.add('in');
-e.target.querySelectorAll('.bar i').forEach(b=>b.style.width=b.dataset.w+'%');
 e.target.querySelectorAll('[data-n]').forEach(c=>{const n=+c.dataset.n,s=performance.now();
 (function f(x){const p=Math.min((x-s)/1400,1);c.textContent=Math.floor(n*p);if(p<1)requestAnimationFrame(f)})(s)});
 io.unobserve(e.target)}),{threshold:.15});
